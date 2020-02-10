@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.alvayonara.kade_submission_alvayonara.ui.leaguelist.LeagueListFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_league_list" >
+        <action
+            android:id="@+id/action_navigation_home_to_leagueDetailActivity"
+            app:destination="@id/leagueDetailActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_match"
+        android:name="com.alvayonara.kade_submission_alvayonara.ui.match.MatchFragment"
+        android:label="@string/title_match"
+        tools:layout="@layout/fragment_match" />
+    <activity
+        android:id="@+id/leagueDetailActivity"
+        android:name="com.alvayonara.kade_submission_alvayonara.ui.leaguelist.LeagueDetailActivity"
+        android:label="LeagueDetailActivity" />
+
+</navigation>

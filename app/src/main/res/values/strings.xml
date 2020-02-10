@@ -1,7 +1,17 @@
 <resources>
-    <string name="app_name">Football Leauges</string>
+    <string name="app_name">Football Leagues</string>
+    <string name="title_home">Home</string>
+    <string name="title_match">Match</string>
 
-    <string-array name="leauge_name">
+    <string-array name="league_id">
+        <item>4328</item>
+        <item>4334</item>
+        <item>4331</item>
+        <item>4332</item>
+        <item>4335</item>
+    </string-array>
+
+    <string-array name="league_name">
         <item>English Premier League</item>
         <item>French Ligue 1</item>
         <item>German BundesLiga</item>
@@ -9,7 +19,7 @@
         <item>Spanish La Liga</item>
     </string-array>
 
-    <array name="leauge_image">
+    <array name="league_image">
         <item>@drawable/img_english_premier_league</item>
         <item>@drawable/img_french_ligue_1</item>
         <item>@drawable/img_german_bundesliga</item>
@@ -70,4 +80,10 @@
             play-off.
         </item>
     </array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_1">Last Match</string>
+    <string name="tab_text_2">Next Match</string>
+    <string name="search_hint">Search Match</string>
 </resources>

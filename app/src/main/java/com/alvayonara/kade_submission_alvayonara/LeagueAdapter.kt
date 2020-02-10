@@ -1,23 +1,47 @@
 package com.alvayonara.kade_submission_alvayonara
 
+import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import org.jetbrains.anko.*
-import org.jetbrains.anko.cardview.v7.cardView
 
 class LeagueAdapter(
+    private val context: Context,
     private val leagues: List<League>,
+    private val typeView: Int,
     private val listener: (League) -> Unit
 ) :
     RecyclerView.Adapter<LeagueAdapter.LeagueViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder =
-        LeagueViewHolder(LeagueUI().createView(AnkoContext.create(parent.context, parent)))
+    companion object {
+        const val TYPE_LIST = 1
+        const val TYPE_GRID = 2
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
+            LeagueViewHolder {
+        return when (typeView) {
+            TYPE_LIST -> LeagueViewHolder(
+                LayoutInflater.from(context).inflate(
+                    R.layout.item_row_league,
+                    parent,
+                    false
+                )
+            )
+            TYPE_GRID -> LeagueViewHolder(
+                LayoutInflater.from(context).inflate(
+                    R.layout.item_grid_league,
+                    parent,
+                    false
+                )
+            )
+            else -> throw IllegalArgumentException("Invalid view type")
+        }
+    }
 
     override fun getItemCount(): Int = leagues.size
 
@@ -35,42 +59,6 @@ class LeagueAdapter(
             leagues.image.let { Picasso.get().load(it).fit().into(image) }
             itemView.setOnClickListener {
                 listener(leagues)
-            }
-        }
-    }
-
-    class LeagueUI : AnkoComponent<ViewGroup> {
-        override fun createView(ui: AnkoContext<ViewGroup>): View {
-            return with(ui) {
-                cardView {
-                    lparams(width = matchParent, height = wrapContent) {
-                        leftMargin = dip(8)
-                        rightMargin = dip(8)
-                        topMargin = dip(8)
-                    }
-
-                    cardElevation = dip(4).toFloat()
-                    radius = dip(8).toFloat()
-
-                    verticalLayout {
-                        orientation = LinearLayout.HORIZONTAL
-                        padding = dip(8)
-
-                        imageView {
-                            id = R.id.img_league
-                        }.lparams {
-                            height = dip(75)
-                            width = dip(75)
-                        }
-
-                        textView {
-                            id = R.id.name_league
-                            textSize = 16f
-                        }.lparams {
-                            margin = dip(16)
-                        }
-                    }.lparams(width = matchParent, height = wrapContent)
-                }
             }
         }
     }
