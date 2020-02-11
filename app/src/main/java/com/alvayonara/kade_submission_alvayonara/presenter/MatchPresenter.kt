@@ -1,5 +1,9 @@
-package com.alvayonara.kade_submission_alvayonara
+package com.alvayonara.kade_submission_alvayonara.presenter
 
+import com.alvayonara.kade_submission_alvayonara.api.ApiRepository
+import com.alvayonara.kade_submission_alvayonara.response.MatchResponse
+import com.alvayonara.kade_submission_alvayonara.api.TheSportDBApi
+import com.alvayonara.kade_submission_alvayonara.view.MatchView
 import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -14,7 +18,11 @@ class MatchPresenter(
         doAsync {
             val data = gson.fromJson(
                 apiRepository
-                    .doRequest(TheSportDBApi.getLastMatch(league)),
+                    .doRequest(
+                        TheSportDBApi.getLastMatch(
+                            league
+                        )
+                    ),
                 MatchResponse::class.java
             )
 
@@ -30,7 +38,11 @@ class MatchPresenter(
         doAsync {
             val data = gson.fromJson(
                 apiRepository
-                    .doRequest(TheSportDBApi.getNextMatch(league)),
+                    .doRequest(
+                        TheSportDBApi.getNextMatch(
+                            league
+                        )
+                    ),
                 MatchResponse::class.java
             )
 

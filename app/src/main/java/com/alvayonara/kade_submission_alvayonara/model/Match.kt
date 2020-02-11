@@ -1,4 +1,4 @@
-package com.alvayonara.kade_submission_alvayonara
+package com.alvayonara.kade_submission_alvayonara.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

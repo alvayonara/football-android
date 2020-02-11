@@ -10,6 +10,13 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alvayonara.kade_submission_alvayonara.*
+import com.alvayonara.kade_submission_alvayonara.adapter.MatchAdapter
+import com.alvayonara.kade_submission_alvayonara.api.ApiRepository
+import com.alvayonara.kade_submission_alvayonara.model.Match
+import com.alvayonara.kade_submission_alvayonara.presenter.MatchPresenter
+import com.alvayonara.kade_submission_alvayonara.utils.invisible
+import com.alvayonara.kade_submission_alvayonara.utils.visible
+import com.alvayonara.kade_submission_alvayonara.view.MatchView
 import com.google.gson.Gson
 
 import kotlinx.android.synthetic.main.fragment_match_list.*
@@ -17,7 +24,8 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.onRefresh
 
-class NextMatchFragment : Fragment(), MatchView {
+class NextMatchFragment : Fragment(),
+    MatchView {
 
     private val matches: MutableList<Match> = mutableListOf()
     private lateinit var adapter: MatchAdapter
@@ -37,8 +45,6 @@ class NextMatchFragment : Fragment(), MatchView {
         progressBar = view.findViewById(R.id.progress_bar)
         swipeRefresh = view.findViewById(R.id.swipe_refresh)
 
-        val leagueId = arguments?.getString(LastMatchFragment.EXTRA_ID_LEAGUE)
-
         match_list.layoutManager = LinearLayoutManager(act)
         adapter =
             MatchAdapter(
@@ -49,9 +55,17 @@ class NextMatchFragment : Fragment(), MatchView {
             }
         match_list.adapter = adapter
 
-        val request = ApiRepository()
+        val leagueId = arguments?.getString(LastMatchFragment.EXTRA_ID_LEAGUE)
+
+        val request =
+            ApiRepository()
         val gson = Gson()
-        val presenter = MatchPresenter(this, request, gson)
+        val presenter =
+            MatchPresenter(
+                this,
+                request,
+                gson
+            )
         presenter.getNextMatchList(leagueId)
 
         swipeRefresh.onRefresh {

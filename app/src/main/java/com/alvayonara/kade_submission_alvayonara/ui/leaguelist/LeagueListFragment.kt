@@ -10,9 +10,9 @@ import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alvayonara.kade_submission_alvayonara.League
-import com.alvayonara.kade_submission_alvayonara.LeagueAdapter
-import com.alvayonara.kade_submission_alvayonara.LeagueAdapter.Companion.TYPE_LIST
+import com.alvayonara.kade_submission_alvayonara.model.League
+import com.alvayonara.kade_submission_alvayonara.adapter.LeagueAdapter
+import com.alvayonara.kade_submission_alvayonara.adapter.LeagueAdapter.Companion.TYPE_LIST
 import com.alvayonara.kade_submission_alvayonara.R
 import kotlinx.android.synthetic.main.activity_leaguelist.*
 import org.jetbrains.anko.startActivity

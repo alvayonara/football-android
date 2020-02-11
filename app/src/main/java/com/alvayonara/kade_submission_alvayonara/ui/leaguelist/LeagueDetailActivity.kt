@@ -7,7 +7,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.alvayonara.kade_submission_alvayonara.League
+import com.alvayonara.kade_submission_alvayonara.model.League
 import com.alvayonara.kade_submission_alvayonara.R
 import kotlinx.android.synthetic.main.activity_league_detail.*
 import org.jetbrains.anko.imageResource

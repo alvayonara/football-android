@@ -1,4 +1,4 @@
-package com.alvayonara.kade_submission_alvayonara
+package com.alvayonara.kade_submission_alvayonara.api
 
 import java.net.URL
 

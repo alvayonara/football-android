@@ -1,4 +1,4 @@
-package com.alvayonara.kade_submission_alvayonara
+package com.alvayonara.kade_submission_alvayonara.adapter
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.alvayonara.kade_submission_alvayonara.R
 import com.alvayonara.kade_submission_alvayonara.ui.match.LastMatchFragment
 import com.alvayonara.kade_submission_alvayonara.ui.match.LastMatchFragment.Companion.EXTRA_ID_LEAGUE
 import com.alvayonara.kade_submission_alvayonara.ui.match.NextMatchFragment
@@ -19,7 +20,10 @@ class SectionPageAdapter(
     FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     @StringRes
-    private val TAB_TITLES = intArrayOf(R.string.tab_text_1, R.string.tab_text_2)
+    private val TAB_TITLES = intArrayOf(
+        R.string.tab_text_1,
+        R.string.tab_text_2
+    )
 
     override fun getItem(position: Int): Fragment {
         val mBundle = Bundle()

@@ -6,19 +6,16 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.alvayonara.kade_submission_alvayonara.League
-import com.alvayonara.kade_submission_alvayonara.LeagueAdapter
-import com.alvayonara.kade_submission_alvayonara.LeagueAdapter.Companion.TYPE_GRID
+import com.alvayonara.kade_submission_alvayonara.model.League
+import com.alvayonara.kade_submission_alvayonara.adapter.LeagueAdapter
+import com.alvayonara.kade_submission_alvayonara.adapter.LeagueAdapter.Companion.TYPE_GRID
 import com.alvayonara.kade_submission_alvayonara.R
-import com.alvayonara.kade_submission_alvayonara.ui.leaguelist.LeagueDetailActivity
 import com.alvayonara.kade_submission_alvayonara.ui.match.MatchLeagueActivity.Companion.EXTRA_MATCH_LEAGUE
 import kotlinx.android.synthetic.main.activity_leaguelist.*
 import org.jetbrains.anko.startActivity
@@ -38,8 +35,8 @@ class MatchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
 
+        initToolbar()
         initData()
 
         league_list.layoutManager = GridLayoutManager(act, 3)
@@ -61,7 +58,6 @@ class MatchFragment : Fragment() {
             act.findViewById<View>(R.id.toolbar) as Toolbar
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
         (activity as AppCompatActivity).supportActionBar?.title = "Match"
-        setHasOptionsMenu(true)
 
         // set status bar color to white
         act.window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -98,28 +94,4 @@ class MatchFragment : Fragment() {
 
         image.recycle()
     }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.option_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-
-        val searchManager = act.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu.findItem(R.id.search).actionView as SearchView
-
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(act.componentName))
-        searchView.queryHint = resources.getString(R.string.search_hint)
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                toast(query)
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
-            }
-        })
-    }
-
-
-
 }

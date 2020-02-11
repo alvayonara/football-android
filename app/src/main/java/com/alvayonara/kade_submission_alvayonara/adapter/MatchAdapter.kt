@@ -1,4 +1,4 @@
-package com.alvayonara.kade_submission_alvayonara
+package com.alvayonara.kade_submission_alvayonara.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.alvayonara.kade_submission_alvayonara.R
+import com.alvayonara.kade_submission_alvayonara.model.Match
 
 class MatchAdapter(
     private val context: Context,

@@ -10,9 +10,6 @@
         android:name="com.alvayonara.kade_submission_alvayonara.ui.leaguelist.LeagueListFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_league_list" >
-        <action
-            android:id="@+id/action_navigation_home_to_leagueDetailActivity"
-            app:destination="@id/leagueDetailActivity" />
     </fragment>
 
     <fragment
@@ -20,9 +17,11 @@
         android:name="com.alvayonara.kade_submission_alvayonara.ui.match.MatchFragment"
         android:label="@string/title_match"
         tools:layout="@layout/fragment_match" />
-    <activity
-        android:id="@+id/leagueDetailActivity"
-        android:name="com.alvayonara.kade_submission_alvayonara.ui.leaguelist.LeagueDetailActivity"
-        android:label="LeagueDetailActivity" />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.alvayonara.kade_submission_alvayonara.ui.searchevent.SearchEventFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search_event" />
 
 </navigation>

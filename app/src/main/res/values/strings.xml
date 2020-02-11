@@ -86,4 +86,5 @@
     <string name="tab_text_1">Last Match</string>
     <string name="tab_text_2">Next Match</string>
     <string name="search_hint">Search Match</string>
+    <string name="title_search">Search</string>
 </resources>

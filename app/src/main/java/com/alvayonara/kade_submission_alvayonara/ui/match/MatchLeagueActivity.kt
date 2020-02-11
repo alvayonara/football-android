@@ -7,9 +7,9 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.alvayonara.kade_submission_alvayonara.League
+import com.alvayonara.kade_submission_alvayonara.model.League
 import com.alvayonara.kade_submission_alvayonara.R
-import com.alvayonara.kade_submission_alvayonara.SectionPageAdapter
+import com.alvayonara.kade_submission_alvayonara.adapter.SectionPageAdapter
 import kotlinx.android.synthetic.main.activity_match_league.*
 import org.jetbrains.anko.imageResource
 
@@ -30,7 +30,12 @@ class MatchLeagueActivity : AppCompatActivity() {
         name_match_league.text = league.name
         img_match_league.imageResource = league.image
 
-        val sectionPageAdapter = SectionPageAdapter(this, league.id, supportFragmentManager)
+        val sectionPageAdapter =
+            SectionPageAdapter(
+                this,
+                league.id,
+                supportFragmentManager
+            )
         view_pager.adapter = sectionPageAdapter
         tabs.setupWithViewPager(view_pager)
     }
