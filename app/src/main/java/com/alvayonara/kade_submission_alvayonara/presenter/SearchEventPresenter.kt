@@ -5,6 +5,7 @@ import com.alvayonara.kade_submission_alvayonara.api.TheSportDBApi
 import com.alvayonara.kade_submission_alvayonara.response.SearchEventResponse
 import com.alvayonara.kade_submission_alvayonara.view.SearchEventView
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -14,6 +15,9 @@ class SearchEventPresenter(
     private val gson: Gson
 ) {
     fun getSearchEventList(event: String?) {
+        view.hideSearch()
+        view.hideSearchResult()
+        view.hideSearchNotFound()
         view.showLoading()
         doAsync {
             val data = gson.fromJson(
@@ -28,7 +32,15 @@ class SearchEventPresenter(
 
             uiThread {
                 view.hideLoading()
-                view.showEventList(data.event.filter { it.sportName == "Soccer" })
+
+                // if search match (event) not found
+                if (data?.event == null) {
+                    view.showSearchNotFound()
+                } else {
+                    // filter data by sport name (soccer)
+                    view.showEventList(data.event.filter { it.sportName == "Soccer" })
+                    view.showSearchResult()
+                }
             }
         }
     }

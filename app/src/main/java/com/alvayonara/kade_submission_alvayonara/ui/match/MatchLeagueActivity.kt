@@ -27,17 +27,7 @@ class MatchLeagueActivity : AppCompatActivity() {
 
         val league = intent.getParcelableExtra(EXTRA_MATCH_LEAGUE) as League
 
-        name_match_league.text = league.name
-        img_match_league.imageResource = league.image
-
-        val sectionPageAdapter =
-            SectionPageAdapter(
-                this,
-                league.id,
-                supportFragmentManager
-            )
-        view_pager.adapter = sectionPageAdapter
-        tabs.setupWithViewPager(view_pager)
+        initView(league)
     }
 
     private fun initToolbar() {
@@ -52,6 +42,21 @@ class MatchLeagueActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimary)
+    }
+
+    private fun initView(league: League) {
+        name_match_league.text = league.name
+        img_match_league.imageResource = league.image
+
+        // init ViewPager TabLayout
+        val sectionPageAdapter =
+            SectionPageAdapter(
+                this,
+                league.id,
+                supportFragmentManager
+            )
+        view_pager.adapter = sectionPageAdapter
+        tabs.setupWithViewPager(view_pager)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

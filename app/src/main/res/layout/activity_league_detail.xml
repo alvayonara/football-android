@@ -8,15 +8,6 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:contentInsetStartWithNavigation="0dp"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_content"
         android:layout_width="match_parent"
@@ -45,6 +36,7 @@
                     android:id="@+id/img_league_detail"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
+                    tools:ignore="ContentDescription"
                     tools:src="@color/colorAccent" />
 
                 <TextView
@@ -69,7 +61,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:text="Description"
+                android:text="@string/description"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="#37474F"
                 android:textStyle="bold" />
@@ -81,8 +73,8 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:paddingBottom="15dp"
-                tools:text="Here is league description."
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                tools:text="Here is league description." />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

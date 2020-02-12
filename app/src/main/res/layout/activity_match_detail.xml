@@ -35,11 +35,11 @@
                 android:paddingRight="15dp">
 
                 <TextView
-                    android:id="@+id/date_event"
+                    android:id="@+id/date_time_event"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"
-                    tools:text="Sunday, 10 February 2020, 07:00 WIB" />
+                    tools:text="10/02/20, 07:00"  />
             </LinearLayout>
 
             <RelativeLayout
@@ -50,13 +50,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:id="@+id/img_home_team"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
+                        tools:ignore="ContentDescription"
                         tools:src="@color/colorAccent" />
 
                     <TextView
@@ -81,6 +83,7 @@
                     android:layout_toStartOf="@id/view_versus"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="@android:color/white"
+                    tools:ignore="RelativeOverlap"
                     tools:text="3" />
 
                 <TextView
@@ -88,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="-"
+                    android:text="@string/versus_team"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textColor="@android:color/white" />
 
@@ -101,19 +104,22 @@
                     android:layout_toEndOf="@id/view_versus"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="@android:color/white"
+                    tools:ignore="RelativeOverlap"
                     tools:text="1" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:id="@+id/img_away_team"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
+                        tools:ignore="ContentDescription"
                         tools:src="@color/colorAccent" />
 
                     <TextView
@@ -167,7 +173,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:text="TEAM STATS"
+                android:text="@string/team_stats"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#37474F"
@@ -189,7 +195,8 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_sports_soccer_black_24dp" />
+                    android:src="@drawable/ic_sports_soccer_black_24dp"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/away_goal_score"
@@ -217,7 +224,8 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_red_card" />
+                    android:src="@drawable/ic_red_card"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/away_red_card"
@@ -246,7 +254,8 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_yellow_card" />
+                    android:src="@drawable/ic_yellow_card"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/away_yellow_card"
@@ -270,7 +279,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:text="LINEUPS"
+                android:text="@string/lineups"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#37474F"
@@ -292,8 +301,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="Goal Keeper"
-                    android:textStyle="bold" />
+                    android:text="@string/goal_keeper"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
 
                 <TextView
                     android:id="@+id/away_GK"
@@ -322,8 +332,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="Defender"
-                    android:textStyle="bold" />
+                    android:text="@string/defender"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
 
                 <TextView
                     android:id="@+id/away_defense"
@@ -351,8 +362,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="Midfielder"
-                    android:textStyle="bold" />
+                    android:text="@string/midfielder"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
 
                 <TextView
                     android:id="@+id/away_midfield"
@@ -380,8 +392,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="Forwarder"
-                    android:textStyle="bold" />
+                    android:text="@string/forwarder"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
 
                 <TextView
                     android:id="@+id/away_forward"
@@ -409,8 +422,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="Substitutes"
-                    android:textStyle="bold" />
+                    android:text="@string/substitutes"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
 
                 <TextView
                     android:id="@+id/away_substitutes"

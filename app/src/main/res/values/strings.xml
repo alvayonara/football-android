@@ -81,10 +81,24 @@
         </item>
     </array>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_text_1">Last Match</string>
     <string name="tab_text_2">Next Match</string>
     <string name="search_hint">Search Match</string>
     <string name="title_search">Search</string>
+    <string name="description">Description</string>
+    <string name="versus_team">-</string>
+    <string name="substitutes">Substitutes</string>
+    <string name="forwarder">Forwarder</string>
+    <string name="midfielder">Midfielder</string>
+    <string name="defender">Defender</string>
+    <string name="goal_keeper">Goal Keeper</string>
+    <string name="lineups">LINEUPS</string>
+    <string name="team_stats">TEAM STATS</string>
+    <string name="search_match_here">Search Match here</string>
+    <string name="match_not_found">Match Not Found</string>
+    <string name="football_repo">Football Repo</string>
+    <string name="leagues">Leagues</string>
+    <string name="worldwide_football_leagues">Worldwide Football Leagues</string>
+    <string name="match">Match</string>
 </resources>

@@ -35,6 +35,7 @@
                 android:id="@+id/img_match_league"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                tools:ignore="ContentDescription"
                 tools:src="@color/colorAccent" />
 
             <View

@@ -9,8 +9,4 @@
         android:id="@+id/navigation_match"
         android:icon="@drawable/ic_sports_soccer_black_24dp"
         android:title="@string/title_match" />
-    <item
-        android:id="@+id/navigation_search"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title="Search" />
 </menu>

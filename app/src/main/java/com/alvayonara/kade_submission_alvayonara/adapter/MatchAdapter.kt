@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alvayonara.kade_submission_alvayonara.R
+import com.alvayonara.kade_submission_alvayonara.DateTimeConvert
 import com.alvayonara.kade_submission_alvayonara.model.Match
 
 class MatchAdapter(
@@ -31,7 +32,7 @@ class MatchAdapter(
 
     class MatchViewHolder(view: View) :
         RecyclerView.ViewHolder(view) {
-        private val dateEvent = view.findViewById<TextView>(R.id.date_event)
+        private val dateTimeEvent = view.findViewById<TextView>(R.id.date_time_event)
         private val nameHomeTeam = view.findViewById<TextView>(R.id.name_home_team)
         private val nameAwayTeam = view.findViewById<TextView>(R.id.name_away_team)
         private val scoreHomeTeam = view.findViewById<TextView>(R.id.score_home_team)
@@ -39,7 +40,7 @@ class MatchAdapter(
         private val nameLeague = view.findViewById<TextView>(R.id.name_league)
 
         fun bindItem(matches: Match, listener: (Match) -> Unit) {
-            dateEvent.text = matches.eventDate
+            dateTimeEvent.text = DateTimeConvert.convertTimeZone(matches.eventDate, matches.timeEvent)
             nameHomeTeam.text = matches.homeTeamName
             nameAwayTeam.text = matches.awayTeamName
             scoreHomeTeam.text = matches.homeScore
@@ -49,6 +50,5 @@ class MatchAdapter(
                 listener(matches)
             }
         }
-
     }
 }

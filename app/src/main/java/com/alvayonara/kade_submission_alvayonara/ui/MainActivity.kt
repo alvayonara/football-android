@@ -13,10 +13,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // hide action bar
+        supportActionBar?.hide()
+
+        // init bottom navigation with jetpack
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
         val navController = findNavController(R.id.nav_host_fragment)
-
         navView.setupWithNavController(navController)
     }
 }

@@ -26,6 +26,7 @@ class SectionPageAdapter(
     )
 
     override fun getItem(position: Int): Fragment {
+        // pass league id to fragment (LastMatchFragment & NextMatchFragment)
         val mBundle = Bundle()
         mBundle.putString(EXTRA_ID_LEAGUE, leagueId)
 

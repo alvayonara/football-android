@@ -49,6 +49,13 @@ class LastMatchFragment : Fragment(),
         progressBar = view.findViewById(R.id.progress_bar)
         swipeRefresh = view.findViewById(R.id.swipe_refresh)
 
+        val leagueId = arguments?.getString(EXTRA_ID_LEAGUE)
+
+        initView()
+        initData(leagueId)
+    }
+
+    private fun initView() {
         match_list.layoutManager = LinearLayoutManager(act)
         adapter =
             MatchAdapter(
@@ -58,9 +65,9 @@ class LastMatchFragment : Fragment(),
                 act.startActivity<MatchDetailActivity>(EXTRA_MATCH_DETAIL to it)
             }
         match_list.adapter = adapter
+    }
 
-        val leagueId = arguments?.getString(EXTRA_ID_LEAGUE)
-
+    private fun initData(leagueId: String?) {
         val request =
             ApiRepository()
         val gson = Gson()

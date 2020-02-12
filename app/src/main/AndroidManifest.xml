@@ -11,8 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.match.MatchDetailActivity"></activity>
-        <activity android:name=".ui.match.MatchLeagueActivity" />
+        <activity android:name=".ui.searchevent.SearchEventActivity" />
+        <activity
+            android:name=".ui.match.MatchDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.match.MatchLeagueActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.leaguelist.LeagueDetailActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
@@ -22,5 +27,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

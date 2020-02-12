@@ -10,11 +10,11 @@ import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alvayonara.kade_submission_alvayonara.model.League
+import com.alvayonara.kade_submission_alvayonara.R
 import com.alvayonara.kade_submission_alvayonara.adapter.LeagueAdapter
 import com.alvayonara.kade_submission_alvayonara.adapter.LeagueAdapter.Companion.TYPE_LIST
-import com.alvayonara.kade_submission_alvayonara.R
-import kotlinx.android.synthetic.main.activity_leaguelist.*
+import com.alvayonara.kade_submission_alvayonara.model.League
+import kotlinx.android.synthetic.main.fragment_league_list.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.act
 
@@ -33,20 +33,8 @@ class LeagueListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initToolbar()
-
         initData()
-
-        league_list.layoutManager = LinearLayoutManager(act, LinearLayoutManager.HORIZONTAL, false)
-        league_list.adapter =
-            LeagueAdapter(
-                act,
-                leagues,
-                TYPE_LIST
-            ) {
-                act.startActivity<LeagueDetailActivity>(
-                    LeagueDetailActivity.EXTRA_LEAGUE to it
-                )
-            }
+        initView()
     }
 
     private fun initToolbar() {
@@ -84,5 +72,19 @@ class LeagueListFragment : Fragment() {
         }
 
         image.recycle()
+    }
+
+    private fun initView() {
+        league_list.layoutManager = LinearLayoutManager(act, LinearLayoutManager.HORIZONTAL, false)
+        league_list.adapter =
+            LeagueAdapter(
+                act,
+                leagues,
+                TYPE_LIST
+            ) {
+                act.startActivity<LeagueDetailActivity>(
+                    LeagueDetailActivity.EXTRA_LEAGUE to it
+                )
+            }
     }
 }

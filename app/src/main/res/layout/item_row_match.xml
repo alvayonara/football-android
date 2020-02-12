@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -29,15 +28,15 @@
             android:paddingRight="15dp">
 
             <TextView
-                android:id="@+id/date_event"
+                android:id="@+id/date_time_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Sunday, 10 February 2020, 07:00 WIB" />
+                tools:text="10/02/20, 07:00" />
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="15dp">
 
@@ -68,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="-"
+                android:text="@string/versus_team"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             <TextView
@@ -107,6 +106,5 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="#666666"
             tools:text="League Name" />
-
     </LinearLayout>
 </androidx.cardview.widget.CardView>
