@@ -5,7 +5,6 @@ import com.alvayonara.kade_submission_alvayonara.api.TheSportDBApi
 import com.alvayonara.kade_submission_alvayonara.response.SearchEventResponse
 import com.alvayonara.kade_submission_alvayonara.view.SearchEventView
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
