@@ -1,6 +1,7 @@
 package com.alvayonara.kade_submission_alvayonara.ui.match
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
@@ -9,9 +10,9 @@ import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import com.alvayonara.kade_submission_alvayonara.DateTimeConvert
 import com.alvayonara.kade_submission_alvayonara.R
 import com.alvayonara.kade_submission_alvayonara.api.ApiRepository
-import com.alvayonara.kade_submission_alvayonara.DateTimeConvert
 import com.alvayonara.kade_submission_alvayonara.model.Match
 import com.alvayonara.kade_submission_alvayonara.model.Team
 import com.alvayonara.kade_submission_alvayonara.presenter.TeamPresenter
@@ -31,6 +32,11 @@ class MatchDetailActivity : AppCompatActivity(),
     TeamView {
 
     private lateinit var progressBar: ProgressBar
+    private lateinit var match: Match
+    private lateinit var presenter: TeamPresenter
+
+    private var menuItem: Menu? = null
+    private var isFavoriteMatch: Boolean = false
 
     companion object {
         const val EXTRA_MATCH_DETAIL = "extra_match_detail"
@@ -40,11 +46,11 @@ class MatchDetailActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_match_detail)
 
-        progressBar = findViewById(R.id.progress_bar)
-
         initToolbar()
 
-        val match = intent.getParcelableExtra(EXTRA_MATCH_DETAIL) as Match
+        progressBar = findViewById(R.id.progress_bar)
+
+        match = intent.getParcelableExtra(EXTRA_MATCH_DETAIL) as Match
 
         initView(match)
         initData(match)
@@ -55,13 +61,14 @@ class MatchDetailActivity : AppCompatActivity(),
         val toolbar =
             findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Match Detail"
+        title = "Match Detail"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // set status bar color to white
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimary)
+        window.statusBarColor =
+            ContextCompat.getColor(this, R.color.colorPrimary)
     }
 
     private fun initView(match: Match) {
@@ -93,23 +100,55 @@ class MatchDetailActivity : AppCompatActivity(),
         val request =
             ApiRepository()
         val gson = Gson()
-        val presenter =
+        presenter =
             TeamPresenter(
                 this,
                 request,
                 gson
             )
+
+        // check state favorite match from db
+        isFavoriteMatch = presenter.checkStateFavoriteMatch(this, match)
+
+        // get data team details
         presenter.getTeamDetailData(match.homeTeamId, match.awayTeamId)
     }
 
+    private fun setFavoriteMatch() {
+        if (isFavoriteMatch)
+            menuItem?.getItem(0)?.icon =
+                ContextCompat.getDrawable(this, R.drawable.ic_added_to_favorites)
+        else
+            menuItem?.getItem(0)?.icon =
+                ContextCompat.getDrawable(this, R.drawable.ic_add_to_favorites)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.match_detail_menu, menu)
+        menuItem = menu
+        setFavoriteMatch()
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
-                return true
+                true
             }
+            R.id.add_to_favorite -> {
+                if (isFavoriteMatch) presenter.removeFromFavoriteMatch(
+                    this,
+                    match
+                ) else presenter.addToFavoriteMatch(this, match)
+
+                isFavoriteMatch = !isFavoriteMatch
+                setFavoriteMatch()
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun showLoading() {

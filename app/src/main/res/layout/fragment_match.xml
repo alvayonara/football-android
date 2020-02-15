@@ -44,11 +44,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="15dp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="55dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/league_list"

@@ -16,4 +16,10 @@
         android:name="com.alvayonara.kade_submission_alvayonara.ui.match.MatchFragment"
         android:label="@string/title_match"
         tools:layout="@layout/fragment_match" />
+
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.alvayonara.kade_submission_alvayonara.ui.favoritematch.FavoriteMatchFragment"
+        android:label="@string/favorites"
+        tools:layout="@layout/fragment_favorite_match" />
 </navigation>

@@ -37,11 +37,6 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        progressBar = findViewById(R.id.progress_bar)
-        layoutSearch = findViewById(R.id.layout_search)
-        layoutSearchResult = findViewById(R.id.layout_search_result)
-        layoutSearchNotFound = findViewById(R.id.layout_search_not_found)
-
         initToolbar()
         initView()
         initData()
@@ -53,6 +48,11 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
     }
 
     private fun initView() {
+        progressBar = findViewById(R.id.progress_bar)
+        layoutSearch = findViewById(R.id.layout_search)
+        layoutSearchResult = findViewById(R.id.layout_search_result)
+        layoutSearchNotFound = findViewById(R.id.layout_search_not_found)
+
         event_list.layoutManager = LinearLayoutManager(this)
         adapter =
             MatchAdapter(
@@ -74,7 +74,7 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.option_menu, menu)
+        inflater.inflate(R.menu.match_menu, menu)
 
         val searchView = menu?.findItem(R.id.search)?.actionView as SearchView
 

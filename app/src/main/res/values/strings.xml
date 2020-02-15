@@ -101,4 +101,9 @@
     <string name="leagues">Leagues</string>
     <string name="worldwide_football_leagues">Worldwide Football Leagues</string>
     <string name="match">Match</string>
+    <string name="favorites">Favorites</string>
+    <string name="favorite_match">Favorite Match</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

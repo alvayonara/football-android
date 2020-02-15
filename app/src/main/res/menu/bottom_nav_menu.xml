@@ -9,4 +9,8 @@
         android:id="@+id/navigation_match"
         android:icon="@drawable/ic_sports_soccer_black_24dp"
         android:title="@string/title_match" />
+    <item
+        android:id="@+id/navigation_favorites"
+        android:icon="@drawable/ic_favorites"
+        android:title="@string/favorites" />
 </menu>

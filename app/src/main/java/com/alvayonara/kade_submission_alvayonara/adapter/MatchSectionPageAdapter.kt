@@ -12,7 +12,7 @@ import com.alvayonara.kade_submission_alvayonara.ui.match.LastMatchFragment
 import com.alvayonara.kade_submission_alvayonara.ui.match.LastMatchFragment.Companion.EXTRA_ID_LEAGUE
 import com.alvayonara.kade_submission_alvayonara.ui.match.NextMatchFragment
 
-class SectionPageAdapter(
+class MatchSectionPageAdapter(
     private val context: Context,
     private val leagueId: String?,
     fragmentManager: FragmentManager

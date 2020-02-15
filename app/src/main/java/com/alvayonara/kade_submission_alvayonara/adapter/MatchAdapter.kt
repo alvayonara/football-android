@@ -40,7 +40,8 @@ class MatchAdapter(
         private val nameLeague = view.findViewById<TextView>(R.id.name_league)
 
         fun bindItem(matches: Match, listener: (Match) -> Unit) {
-            dateTimeEvent.text = DateTimeConvert.convertTimeZone(matches.eventDate, matches.timeEvent)
+            dateTimeEvent.text =
+                DateTimeConvert.convertTimeZone(matches.eventDate, matches.timeEvent)
             nameHomeTeam.text = matches.homeTeamName
             nameAwayTeam.text = matches.awayTeamName
             scoreHomeTeam.text = matches.homeScore

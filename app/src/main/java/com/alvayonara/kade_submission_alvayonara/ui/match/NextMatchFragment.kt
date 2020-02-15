@@ -42,9 +42,6 @@ class NextMatchFragment : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        progressBar = view.findViewById(R.id.progress_bar)
-        swipeRefresh = view.findViewById(R.id.swipe_refresh)
-
         val leagueId = arguments?.getString(LastMatchFragment.EXTRA_ID_LEAGUE)
 
         initView()
@@ -52,6 +49,9 @@ class NextMatchFragment : Fragment(),
     }
 
     private fun initView() {
+        progressBar = act.findViewById(R.id.progress_bar)
+        swipeRefresh = act.findViewById(R.id.swipe_refresh)
+
         match_list.layoutManager = LinearLayoutManager(act)
         adapter =
             MatchAdapter(

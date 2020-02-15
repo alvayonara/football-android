@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         // init bottom navigation with jetpack
+        setupBottomNavigationBar()
+    }
+
+    private fun setupBottomNavigationBar() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         navView.setupWithNavController(navController)

@@ -24,7 +24,8 @@ object DateTimeConvert {
             val dateTimeGMT = formatter.parse(dateTime)
 
             // reformat date time style (ex: Saturday, 31 December 1997 09:00)
-            val formatterReformat = SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm", Locale.getDefault())
+            val formatterReformat =
+                SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm", Locale.getDefault())
 
             // convert from GMT to GMT+7
             formatterReformat.timeZone = TimeZone.getTimeZone("GMT+7")
