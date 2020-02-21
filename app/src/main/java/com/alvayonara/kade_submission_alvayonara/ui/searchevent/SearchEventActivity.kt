@@ -76,7 +76,7 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
         val inflater = menuInflater
         inflater.inflate(R.menu.match_menu, menu)
 
-        val searchView = menu?.findItem(R.id.search)?.actionView as SearchView
+        val searchView = menu?.findItem(R.id.search_match)?.actionView as SearchView
 
         initSearchView(searchView)
 

@@ -8,13 +8,6 @@
         <item name="colorAccent">@android:color/white</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Toolbar.Light" parent="@style/AppTheme">
-        <item name="colorControlNormal">#666666</item>
-        <item name="android:textColorPrimary">#666666</item>
-    </style>
-
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>

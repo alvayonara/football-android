@@ -5,33 +5,36 @@ import android.database.sqlite.SQLiteConstraintException
 import android.util.Log
 import com.alvayonara.kade_submission_alvayonara.api.ApiRepository
 import com.alvayonara.kade_submission_alvayonara.api.TheSportDBApi
+import com.alvayonara.kade_submission_alvayonara.coroutines.CoroutineContextProvider
 import com.alvayonara.kade_submission_alvayonara.db.database
 import com.alvayonara.kade_submission_alvayonara.model.Match
 import com.alvayonara.kade_submission_alvayonara.response.TeamResponse
 import com.alvayonara.kade_submission_alvayonara.view.TeamView
 import com.google.gson.Gson
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 
 class TeamPresenter(
     private val view: TeamView,
     private val apiRepository: ApiRepository,
-    private val gson: Gson
+    private val gson: Gson,
+    private val context: CoroutineContextProvider = CoroutineContextProvider()
 ) {
     fun getTeamDetailData(teamIdHome: String?, teamIdAway: String?) {
         view.showLoading()
-        doAsync {
+
+        GlobalScope.launch(context.main) {
             val dataTeamHome = gson.fromJson(
                 apiRepository
                     .doRequest(
                         TheSportDBApi.getTeamDetail(
                             teamIdHome
                         )
-                    ),
+                    ).await(),
                 TeamResponse::class.java
             )
 
@@ -41,14 +44,12 @@ class TeamPresenter(
                         TheSportDBApi.getTeamDetail(
                             teamIdAway
                         )
-                    ),
+                    ).await(),
                 TeamResponse::class.java
             )
 
-            uiThread {
-                view.hideLoading()
-                view.showTeamDetail(dataTeamHome.teams, dataTeamAway.teams)
-            }
+            view.hideLoading()
+            view.showTeamDetail(dataTeamHome.teams, dataTeamAway.teams)
         }
     }
 

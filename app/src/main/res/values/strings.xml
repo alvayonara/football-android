@@ -81,7 +81,6 @@
         </item>
     </array>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_text_1">Last Match</string>
     <string name="tab_text_2">Next Match</string>
     <string name="search_hint">Search Match</string>
@@ -103,7 +102,4 @@
     <string name="match">Match</string>
     <string name="favorites">Favorites</string>
     <string name="favorite_match">Favorite Match</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
 </resources>
