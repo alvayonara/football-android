@@ -5,5 +5,5 @@ import com.alvayonara.kade_submission_alvayonara.model.Match
 interface MatchView {
     fun showLoading()
     fun hideLoading()
-    fun showMatchList(data: List<Match>)
+    fun showMatchList(dataLastMatch: List<Match>, dataNextMatch: List<Match>)
 }

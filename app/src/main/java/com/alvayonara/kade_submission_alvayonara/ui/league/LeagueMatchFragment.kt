@@ -1,34 +1,36 @@
-package com.alvayonara.kade_submission_alvayonara.ui.match
+package com.alvayonara.kade_submission_alvayonara.ui.league
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.alvayonara.kade_submission_alvayonara.*
+import com.alvayonara.kade_submission_alvayonara.R
 import com.alvayonara.kade_submission_alvayonara.adapter.MatchAdapter
+import com.alvayonara.kade_submission_alvayonara.adapter.MatchAdapter.Companion.TYPE_LIST_HORIZONTAL
 import com.alvayonara.kade_submission_alvayonara.api.ApiRepository
 import com.alvayonara.kade_submission_alvayonara.model.Match
 import com.alvayonara.kade_submission_alvayonara.presenter.MatchPresenter
-
-import com.alvayonara.kade_submission_alvayonara.ui.match.MatchDetailActivity.Companion.EXTRA_MATCH_DETAIL
+import com.alvayonara.kade_submission_alvayonara.ui.match.MatchActivity
+import com.alvayonara.kade_submission_alvayonara.ui.match.MatchActivity.Companion.EXTRA_MATCH_DETAIL
 import com.alvayonara.kade_submission_alvayonara.utils.invisible
 import com.alvayonara.kade_submission_alvayonara.utils.visible
 import com.alvayonara.kade_submission_alvayonara.view.MatchView
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_match_list.*
+import kotlinx.android.synthetic.main.fragment_league_match.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.onRefresh
 
-class LastMatchFragment : Fragment(),
-    MatchView {
+class LeagueMatchFragment : Fragment(), MatchView {
 
-    private val matches: MutableList<Match> = mutableListOf()
-    private lateinit var adapter: MatchAdapter
+    private val lastMatches: MutableList<Match> = mutableListOf()
+    private val nextMatches: MutableList<Match> = mutableListOf()
+    private lateinit var lastMatchAdapter: MatchAdapter
+    private lateinit var nextMatchAdapter: MatchAdapter
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
 
@@ -40,7 +42,7 @@ class LastMatchFragment : Fragment(),
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_match_list, container, false)
+        return inflater.inflate(R.layout.fragment_league_match, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,15 +58,30 @@ class LastMatchFragment : Fragment(),
     }
 
     private fun initView() {
-        match_list.layoutManager = LinearLayoutManager(act)
-        adapter =
+        // recycler view last match
+        last_match_list.layoutManager =
+            LinearLayoutManager(act, LinearLayoutManager.HORIZONTAL, false)
+        lastMatchAdapter =
             MatchAdapter(
                 act,
-                matches
+                lastMatches,
+                TYPE_LIST_HORIZONTAL
             ) {
-                act.startActivity<MatchDetailActivity>(EXTRA_MATCH_DETAIL to it)
+                act.startActivity<MatchActivity>(EXTRA_MATCH_DETAIL to it)
             }
-        match_list.adapter = adapter
+        last_match_list.adapter = lastMatchAdapter
+
+        // recycler view next match
+        next_match_list.layoutManager =
+            LinearLayoutManager(act, LinearLayoutManager.HORIZONTAL, false)
+        nextMatchAdapter = MatchAdapter(
+            act,
+            nextMatches,
+            TYPE_LIST_HORIZONTAL
+        ) {
+            act.startActivity<MatchActivity>(EXTRA_MATCH_DETAIL to it)
+        }
+        next_match_list.adapter = nextMatchAdapter
     }
 
     private fun initData(leagueId: String?) {
@@ -77,10 +94,10 @@ class LastMatchFragment : Fragment(),
                 request,
                 gson
             )
-        presenter.getLastMatchList(leagueId)
+        presenter.getMatchList(leagueId)
 
         swipeRefresh.onRefresh {
-            presenter.getLastMatchList(leagueId)
+            presenter.getMatchList(leagueId)
         }
     }
 
@@ -92,10 +109,16 @@ class LastMatchFragment : Fragment(),
         progressBar.invisible()
     }
 
-    override fun showMatchList(data: List<Match>) {
+    override fun showMatchList(dataLastMatch: List<Match>, dataNextMatch: List<Match>) {
         swipeRefresh.isRefreshing = false
-        matches.clear()
-        matches.addAll(data)
-        adapter.notifyDataSetChanged()
+
+        lastMatches.clear()
+        nextMatches.clear()
+
+        lastMatches.addAll(dataLastMatch)
+        nextMatches.addAll(dataNextMatch)
+
+        lastMatchAdapter.notifyDataSetChanged()
+        nextMatchAdapter.notifyDataSetChanged()
     }
 }

@@ -35,7 +35,7 @@ class MatchPresenterTest {
     }
 
     @Test
-    fun testGetLastMatchList() {
+    fun testGetMatchList() {
         val matches: MutableList<Match> = mutableListOf()
         val response = MatchResponse(matches)
         val leagueId = "4328"
@@ -48,32 +48,10 @@ class MatchPresenterTest {
 
             Mockito.`when`(gson.fromJson("", MatchResponse::class.java)).thenReturn(response)
 
-            presenter.getLastMatchList(leagueId)
+            presenter.getMatchList(leagueId)
 
             Mockito.verify(view).showLoading()
-            Mockito.verify(view).showMatchList(matches)
-            Mockito.verify(view).hideLoading()
-        }
-    }
-
-    @Test
-    fun testGetNextMatchList() {
-        val matches: MutableList<Match> = mutableListOf()
-        val response = MatchResponse(matches)
-        val leagueId = "4328"
-
-        runBlocking {
-            Mockito.`when`(apiRepository.doRequest(ArgumentMatchers.anyString()))
-                .thenReturn(apiResponse)
-
-            Mockito.`when`(apiResponse.await()).thenReturn("")
-
-            Mockito.`when`(gson.fromJson("", MatchResponse::class.java)).thenReturn(response)
-
-            presenter.getNextMatchList(leagueId)
-
-            Mockito.verify(view).showLoading()
-            Mockito.verify(view).showMatchList(matches)
+            Mockito.verify(view).showMatchList(matches, matches)
             Mockito.verify(view).hideLoading()
         }
     }

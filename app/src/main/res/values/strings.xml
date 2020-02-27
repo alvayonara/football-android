@@ -1,7 +1,6 @@
 <resources>
-    <string name="app_name">Football Leagues</string>
+    <string name="app_name">Football Apps</string>
     <string name="title_home">Home</string>
-    <string name="title_match">Match</string>
 
     <string-array name="league_id">
         <item>4328</item>
@@ -81,9 +80,12 @@
         </item>
     </array>
 
-    <string name="tab_text_1">Last Match</string>
-    <string name="tab_text_2">Next Match</string>
-    <string name="search_hint">Search Match</string>
+    <string name="tab_text_1">Overview</string>
+    <string name="tab_text_2">Matches</string>
+    <string name="tab_text_3">Standings</string>
+    <string name="tab_text_4">Teams</string>
+    <string name="search_match_hint">Search Match</string>
+    <string name="search_team_hint">Search Team</string>
     <string name="title_search">Search</string>
     <string name="description">Description</string>
     <string name="versus_team">-</string>
@@ -96,10 +98,27 @@
     <string name="team_stats">TEAM STATS</string>
     <string name="search_match_here">Search Match here</string>
     <string name="match_not_found">Match Not Found</string>
-    <string name="football_repo">Football Repo</string>
+    <string name="football_apps">Football Apps</string>
     <string name="leagues">Leagues</string>
     <string name="worldwide_football_leagues">Worldwide Football Leagues</string>
-    <string name="match">Match</string>
     <string name="favorites">Favorites</string>
-    <string name="favorite_match">Favorite Match</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="next_match">Next Match</string>
+    <string name="last_match">Last Match</string>
+    <string name="search_match">Search Match</string>
+    <string name="search_team">Search Team</string>
+    <string name="formed_year">Formed Year</string>
+    <string name="stadium_name">Stadium Name</string>
+    <string name="search_team_here">Search Team here</string>
+    <string name="team_not_found">Team Not Found</string>
+    <string name="club">Club</string>
+    <string name="mp">MP</string>
+    <string name="w">W</string>
+    <string name="d">D</string>
+    <string name="l">L</string>
+    <string name="gf">GF</string>
+    <string name="ga">GA</string>
+    <string name="gd">GD</string>
+    <string name="pts">Pts</string>
 </resources>

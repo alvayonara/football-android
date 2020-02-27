@@ -5,7 +5,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
-import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -15,25 +14,25 @@ import com.alvayonara.kade_submission_alvayonara.R
 import com.alvayonara.kade_submission_alvayonara.api.ApiRepository
 import com.alvayonara.kade_submission_alvayonara.model.Match
 import com.alvayonara.kade_submission_alvayonara.model.Team
-import com.alvayonara.kade_submission_alvayonara.presenter.TeamPresenter
+import com.alvayonara.kade_submission_alvayonara.presenter.MatchDetailPresenter
 import com.alvayonara.kade_submission_alvayonara.utils.invisible
 import com.alvayonara.kade_submission_alvayonara.utils.visible
-import com.alvayonara.kade_submission_alvayonara.view.TeamView
+import com.alvayonara.kade_submission_alvayonara.view.MatchDetailView
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_match_detail.*
-import kotlinx.android.synthetic.main.item_row_match.name_away_team
-import kotlinx.android.synthetic.main.item_row_match.name_home_team
-import kotlinx.android.synthetic.main.item_row_match.name_league
-import kotlinx.android.synthetic.main.item_row_match.score_away_team
-import kotlinx.android.synthetic.main.item_row_match.score_home_team
+import kotlinx.android.synthetic.main.activity_match.*
+import kotlinx.android.synthetic.main.item_vertical_match.name_away_team
+import kotlinx.android.synthetic.main.item_vertical_match.name_home_team
+import kotlinx.android.synthetic.main.item_vertical_match.name_league
+import kotlinx.android.synthetic.main.item_vertical_match.score_away_team
+import kotlinx.android.synthetic.main.item_vertical_match.score_home_team
 
-class MatchDetailActivity : AppCompatActivity(),
-    TeamView {
+class MatchActivity : AppCompatActivity(),
+    MatchDetailView {
 
     private lateinit var progressBar: ProgressBar
     private lateinit var match: Match
-    private lateinit var presenter: TeamPresenter
+    private lateinit var presenter: MatchDetailPresenter
 
     private var menuItem: Menu? = null
     private var isFavoriteMatch: Boolean = false
@@ -44,7 +43,7 @@ class MatchDetailActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_match_detail)
+        setContentView(R.layout.activity_match)
 
         initToolbar()
 
@@ -101,7 +100,7 @@ class MatchDetailActivity : AppCompatActivity(),
             ApiRepository()
         val gson = Gson()
         presenter =
-            TeamPresenter(
+            MatchDetailPresenter(
                 this,
                 request,
                 gson
@@ -160,10 +159,7 @@ class MatchDetailActivity : AppCompatActivity(),
     }
 
     override fun showTeamDetail(dataHomeTeam: List<Team>, dataAwayTeam: List<Team>) {
-        val imageHomeTeam = findViewById<ImageView>(R.id.img_home_team)
-        val imageAwayTeam = findViewById<ImageView>(R.id.img_away_team)
-
-        Picasso.get().load(dataHomeTeam[0].badgeTeam).into(imageHomeTeam)
-        Picasso.get().load(dataAwayTeam[0].badgeTeam).into(imageAwayTeam)
+        Picasso.get().load(dataHomeTeam[0].badgeTeam).into(img_home_team)
+        Picasso.get().load(dataAwayTeam[0].badgeTeam).into(img_away_team)
     }
 }

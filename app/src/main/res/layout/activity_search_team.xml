@@ -12,13 +12,13 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/event_list"
+            android:id="@+id/team_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:scrollbars="vertical"
             android:scrollingCache="true"
-            tools:listitem="@layout/item_row_match" />
+            tools:listitem="@layout/item_row_team" />
     </LinearLayout>
 
     <ProgressBar
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/search_match_here"
+            android:text="@string/search_team_here"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/match_not_found"
+            android:text="@string/team_not_found"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold" />

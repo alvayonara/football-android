@@ -18,7 +18,7 @@ class FavoriteMatchPresenter(
         val favoriteData: MutableList<Match> = mutableListOf()
 
         context.database.use {
-            val data = select(Match.TABLE_FAVORITE)
+            val data = select(Match.TABLE_FAVORITE_MATCH)
             val favorite = data.parseList(classParser<Match>())
 
             favoriteData.addAll(favorite)

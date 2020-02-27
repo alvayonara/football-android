@@ -7,19 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.alvayonara.kade_submission_alvayonara.ui.leaguelist.LeagueListFragment"
+        android:name="com.alvayonara.kade_submission_alvayonara.ui.league.LeagueListFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_league_list" />
 
     <fragment
-        android:id="@+id/navigation_match"
-        android:name="com.alvayonara.kade_submission_alvayonara.ui.match.MatchFragment"
-        android:label="@string/title_match"
-        tools:layout="@layout/fragment_match" />
-
-    <fragment
         android:id="@+id/navigation_favorites"
-        android:name="com.alvayonara.kade_submission_alvayonara.ui.favoritematch.FavoriteMatchFragment"
+        android:name="com.alvayonara.kade_submission_alvayonara.ui.favorite.FavoriteFragment"
         android:label="@string/favorites"
-        tools:layout="@layout/fragment_favorite_match" />
+        tools:layout="@layout/fragment_favorite" />
 </navigation>

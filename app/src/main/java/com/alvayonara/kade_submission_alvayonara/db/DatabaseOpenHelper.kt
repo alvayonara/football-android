@@ -3,11 +3,12 @@ package com.alvayonara.kade_submission_alvayonara.db
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import com.alvayonara.kade_submission_alvayonara.model.Match
+import com.alvayonara.kade_submission_alvayonara.model.Team
 
 import org.jetbrains.anko.db.*
 
 class MyDatabaseOpenHelper(ctx: Context) :
-    ManagedSQLiteOpenHelper(ctx, "FavoriteMatch.db", null, 1) {
+    ManagedSQLiteOpenHelper(ctx, "Favorite.db", null, 1) {
 
     companion object {
         private var instance: MyDatabaseOpenHelper? = null
@@ -23,7 +24,7 @@ class MyDatabaseOpenHelper(ctx: Context) :
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.createTable(
-            Match.TABLE_FAVORITE, true,
+            Match.TABLE_FAVORITE_MATCH, true,
             Match.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
             Match.EVENT_ID to TEXT + UNIQUE,
             Match.SPORT_NAME to TEXT,
@@ -55,10 +56,23 @@ class MyDatabaseOpenHelper(ctx: Context) :
             Match.AWAY_FORWARD to TEXT,
             Match.AWAY_SUBSTITUTE to TEXT
         )
+
+        db?.createTable(
+            Team.TABLE_FAVORITE_TEAM, true,
+            Team.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+            Team.TEAM_ID to TEXT + UNIQUE,
+            Team.TEAM_BADGE to TEXT,
+            Team.TEAM_NAME to TEXT,
+            Team.STADIUM_NAME to TEXT,
+            Team.TEAM_DESCRIPTION to TEXT,
+            Team.TEAM_YEAR_FORMED to TEXT,
+            Team.SPORT_NAME to TEXT
+        )
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db?.dropTable(Match.TABLE_FAVORITE, true)
+        db?.dropTable(Match.TABLE_FAVORITE_MATCH, true)
+        db?.dropTable(Team.TABLE_FAVORITE_TEAM, true)
     }
 }
 

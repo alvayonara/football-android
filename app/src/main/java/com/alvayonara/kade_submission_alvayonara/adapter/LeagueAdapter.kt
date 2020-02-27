@@ -14,36 +14,18 @@ import com.squareup.picasso.Picasso
 class LeagueAdapter(
     private val context: Context,
     private val leagues: List<League>,
-    private val typeView: Int,
     private val listener: (League) -> Unit
 ) :
     RecyclerView.Adapter<LeagueAdapter.LeagueViewHolder>() {
 
-    companion object {
-        const val TYPE_LIST = 1
-        const val TYPE_GRID = 2
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
-            LeagueViewHolder {
-        return when (typeView) {
-            TYPE_LIST -> LeagueViewHolder(
-                LayoutInflater.from(context).inflate(
-                    R.layout.item_row_league,
-                    parent,
-                    false
-                )
-            )
-            TYPE_GRID -> LeagueViewHolder(
-                LayoutInflater.from(context).inflate(
-                    R.layout.item_grid_league,
-                    parent,
-                    false
-                )
-            )
-            else -> throw IllegalArgumentException("Invalid view type")
-        }
-    }
+            LeagueViewHolder = LeagueViewHolder(
+        LayoutInflater.from(context).inflate(
+            R.layout.item_row_league,
+            parent,
+            false
+        )
+    )
 
     override fun getItemCount(): Int = leagues.size
 

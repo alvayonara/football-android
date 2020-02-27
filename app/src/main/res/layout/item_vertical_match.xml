@@ -60,7 +60,8 @@
                 android:layout_toStartOf="@id/view_versus"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@android:color/black"
-                tools:text="3" />
+                tools:text="3"
+                tools:ignore="RelativeOverlap" />
 
             <TextView
                 android:id="@+id/view_versus"
@@ -79,7 +80,8 @@
                 android:layout_toEndOf="@id/view_versus"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@android:color/black"
-                tools:text="1" />
+                tools:text="1"
+                tools:ignore="RelativeOverlap" />
 
             <TextView
                 android:id="@+id/name_away_team"

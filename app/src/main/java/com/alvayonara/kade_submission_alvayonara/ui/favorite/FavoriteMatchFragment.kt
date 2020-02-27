@@ -1,4 +1,4 @@
-package com.alvayonara.kade_submission_alvayonara.ui.favoritematch
+package com.alvayonara.kade_submission_alvayonara.ui.favorite
 
 
 import android.os.Bundle
@@ -12,9 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alvayonara.kade_submission_alvayonara.R
 import com.alvayonara.kade_submission_alvayonara.adapter.MatchAdapter
+import com.alvayonara.kade_submission_alvayonara.adapter.MatchAdapter.Companion.TYPE_LIST_VERTICAL
 import com.alvayonara.kade_submission_alvayonara.model.Match
 import com.alvayonara.kade_submission_alvayonara.presenter.FavoriteMatchPresenter
-import com.alvayonara.kade_submission_alvayonara.ui.match.MatchDetailActivity
+import com.alvayonara.kade_submission_alvayonara.ui.match.MatchActivity
 import com.alvayonara.kade_submission_alvayonara.utils.invisible
 import com.alvayonara.kade_submission_alvayonara.utils.visible
 import com.alvayonara.kade_submission_alvayonara.view.FavoriteMatchView
@@ -54,9 +55,10 @@ class FavoriteMatchFragment : Fragment(), FavoriteMatchView {
         favorite_match_list.layoutManager = LinearLayoutManager(act)
         adapter = MatchAdapter(
             act,
-            favorites
+            favorites,
+            TYPE_LIST_VERTICAL
         ) {
-            act.startActivity<MatchDetailActivity>(MatchDetailActivity.EXTRA_MATCH_DETAIL to it)
+            act.startActivity<MatchActivity>(MatchActivity.EXTRA_MATCH_DETAIL to it)
         }
         favorite_match_list.adapter = adapter
     }

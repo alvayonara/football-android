@@ -3,9 +3,9 @@ package com.alvayonara.kade_submission_alvayonara.team
 import com.alvayonara.kade_submission_alvayonara.api.ApiRepository
 import com.alvayonara.kade_submission_alvayonara.coroutines.TestContextProvider
 import com.alvayonara.kade_submission_alvayonara.model.Team
-import com.alvayonara.kade_submission_alvayonara.presenter.TeamPresenter
+import com.alvayonara.kade_submission_alvayonara.presenter.MatchDetailPresenter
 import com.alvayonara.kade_submission_alvayonara.response.TeamResponse
-import com.alvayonara.kade_submission_alvayonara.view.TeamView
+import com.alvayonara.kade_submission_alvayonara.view.MatchDetailView
 import com.google.gson.Gson
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.runBlocking
@@ -18,7 +18,7 @@ import org.mockito.MockitoAnnotations
 
 class TeamPresenterTest {
     @Mock
-    private lateinit var view: TeamView
+    private lateinit var view: MatchDetailView
 
     @Mock
     private lateinit var gson: Gson
@@ -29,12 +29,12 @@ class TeamPresenterTest {
     @Mock
     private lateinit var apiResponse: Deferred<String>
 
-    private lateinit var presenter: TeamPresenter
+    private lateinit var presenter: MatchDetailPresenter
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        presenter = TeamPresenter(view, apiRepository, gson, TestContextProvider())
+        presenter = MatchDetailPresenter(view, apiRepository, gson, TestContextProvider())
     }
 
     @Test

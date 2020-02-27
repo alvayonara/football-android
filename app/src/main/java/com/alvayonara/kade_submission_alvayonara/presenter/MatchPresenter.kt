@@ -15,11 +15,11 @@ class MatchPresenter(
     private val gson: Gson,
     private val context: CoroutineContextProvider = CoroutineContextProvider()
 ) {
-    fun getLastMatchList(league: String?) {
+    fun getMatchList(league: String?) {
         view.showLoading()
 
         GlobalScope.launch(context.main) {
-            val data = gson.fromJson(
+            val dataLastMatch = gson.fromJson(
                 apiRepository
                     .doRequest(
                         TheSportDBApi.getLastMatch(
@@ -29,16 +29,7 @@ class MatchPresenter(
                 MatchResponse::class.java
             )
 
-            view.hideLoading()
-            view.showMatchList(data.events)
-        }
-    }
-
-    fun getNextMatchList(league: String?) {
-        view.showLoading()
-
-        GlobalScope.launch(context.main) {
-            val data = gson.fromJson(
+            val dataNextMatch = gson.fromJson(
                 apiRepository
                     .doRequest(
                         TheSportDBApi.getNextMatch(
@@ -49,7 +40,7 @@ class MatchPresenter(
             )
 
             view.hideLoading()
-            view.showMatchList(data.events)
+            view.showMatchList(dataLastMatch.events, dataNextMatch.events)
         }
     }
 }

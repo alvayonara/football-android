@@ -12,15 +12,17 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvayonara.kade_submission_alvayonara.R
 import com.alvayonara.kade_submission_alvayonara.adapter.MatchAdapter
+import com.alvayonara.kade_submission_alvayonara.adapter.MatchAdapter.Companion.TYPE_LIST_VERTICAL
 import com.alvayonara.kade_submission_alvayonara.api.ApiRepository
 import com.alvayonara.kade_submission_alvayonara.model.Match
 import com.alvayonara.kade_submission_alvayonara.presenter.SearchEventPresenter
-import com.alvayonara.kade_submission_alvayonara.ui.match.MatchDetailActivity
+import com.alvayonara.kade_submission_alvayonara.testing.EspressoIdlingResource
+import com.alvayonara.kade_submission_alvayonara.ui.match.MatchActivity
 import com.alvayonara.kade_submission_alvayonara.utils.invisible
 import com.alvayonara.kade_submission_alvayonara.utils.visible
 import com.alvayonara.kade_submission_alvayonara.view.SearchEventView
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.activity_search_event.*
 import org.jetbrains.anko.startActivity
 
 class SearchEventActivity : AppCompatActivity(), SearchEventView {
@@ -35,7 +37,7 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
+        setContentView(R.layout.activity_search_event)
 
         initToolbar()
         initView()
@@ -57,9 +59,10 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
         adapter =
             MatchAdapter(
                 this,
-                events
+                events,
+                TYPE_LIST_VERTICAL
             ) {
-                startActivity<MatchDetailActivity>(MatchDetailActivity.EXTRA_MATCH_DETAIL to it)
+                startActivity<MatchActivity>(MatchActivity.EXTRA_MATCH_DETAIL to it)
             }
         event_list.adapter = adapter
     }
@@ -74,7 +77,7 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.match_menu, menu)
+        inflater.inflate(R.menu.search_event_menu, menu)
 
         val searchView = menu?.findItem(R.id.search_match)?.actionView as SearchView
 
@@ -86,10 +89,14 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
     private fun initSearchView(searchView: SearchView) {
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        searchView.queryHint = resources.getString(R.string.search_hint)
+        searchView.queryHint = resources.getString(R.string.search_match_hint)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
+
+                // memberitahu Espresso bahwa aplikasi sedang sibuk
+                EspressoIdlingResource.increment()
+
                 presenter.getSearchEventList(query)
                 return false
             }
@@ -143,6 +150,12 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
     }
 
     override fun showEventList(data: List<Match>) {
+
+        if (!EspressoIdlingResource.idlingResource.isIdleNow) {
+            // memberitahu Espresso bahwa tugas telah selesai dijalankan
+            EspressoIdlingResource.decrement()
+        }
+
         events.clear()
         events.addAll(data)
         adapter.notifyDataSetChanged()
