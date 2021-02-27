@@ -1,7 +1,16 @@
 <resources>
-    <string name="app_name">Football Leauges</string>
+    <string name="app_name">Football Apps</string>
+    <string name="title_home">Home</string>
 
-    <string-array name="leauge_name">
+    <string-array name="league_id">
+        <item>4328</item>
+        <item>4334</item>
+        <item>4331</item>
+        <item>4332</item>
+        <item>4335</item>
+    </string-array>
+
+    <string-array name="league_name">
         <item>English Premier League</item>
         <item>French Ligue 1</item>
         <item>German BundesLiga</item>
@@ -9,7 +18,7 @@
         <item>Spanish La Liga</item>
     </string-array>
 
-    <array name="leauge_image">
+    <array name="league_image">
         <item>@drawable/img_english_premier_league</item>
         <item>@drawable/img_french_ligue_1</item>
         <item>@drawable/img_german_bundesliga</item>
@@ -70,4 +79,46 @@
             play-off.
         </item>
     </array>
+
+    <string name="tab_text_1">Overview</string>
+    <string name="tab_text_2">Matches</string>
+    <string name="tab_text_3">Standings</string>
+    <string name="tab_text_4">Teams</string>
+    <string name="search_match_hint">Search Match</string>
+    <string name="search_team_hint">Search Team</string>
+    <string name="title_search">Search</string>
+    <string name="description">Description</string>
+    <string name="versus_team">-</string>
+    <string name="substitutes">Substitutes</string>
+    <string name="forwarder">Forwarder</string>
+    <string name="midfielder">Midfielder</string>
+    <string name="defender">Defender</string>
+    <string name="goal_keeper">Goal Keeper</string>
+    <string name="lineups">LINEUPS</string>
+    <string name="team_stats">TEAM STATS</string>
+    <string name="search_match_here">Search Match here</string>
+    <string name="match_not_found">Match Not Found</string>
+    <string name="football_apps">Football Apps</string>
+    <string name="leagues">Leagues</string>
+    <string name="worldwide_football_leagues">Worldwide Football Leagues</string>
+    <string name="favorites">Favorites</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="next_match">Next Match</string>
+    <string name="last_match">Last Match</string>
+    <string name="search_match">Search Match</string>
+    <string name="search_team">Search Team</string>
+    <string name="formed_year">Formed Year</string>
+    <string name="stadium_name">Stadium Name</string>
+    <string name="search_team_here">Search Team here</string>
+    <string name="team_not_found">Team Not Found</string>
+    <string name="club">Club</string>
+    <string name="mp">MP</string>
+    <string name="w">W</string>
+    <string name="d">D</string>
+    <string name="l">L</string>
+    <string name="gf">GF</string>
+    <string name="ga">GA</string>
+    <string name="gd">GD</string>
+    <string name="pts">Pts</string>
 </resources>
